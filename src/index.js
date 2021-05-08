@@ -12,12 +12,15 @@ const surveryReducer = ( state = {}, action ) => {
     if (action.type === 'sendFeeling') {
         state = {...state, feeling: action.payload}
     }
+    
     if (action.type === 'sendUnderstanding') {
         state = {...state, understanding: action.payload}
     }
+    
     if (action.type === 'sendSupport') {
         state = {...state, support: action.payload}
     }
+    
     if (action.type === 'sendComments') {
         state = {...state, comments: action.payload}
     }
@@ -25,5 +28,13 @@ const surveryReducer = ( state = {}, action ) => {
 
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Store goes here
+const storeInstance = createStore(
+    combineReducers({
+        surveryReducer: surveryReducer
+    }),
+    applyMiddleware(logger),
+)
+
+ReactDOM.render(<Provider store = { storeInstance }><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
