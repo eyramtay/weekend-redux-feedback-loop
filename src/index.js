@@ -31,7 +31,7 @@ const surveryReducer = ( state = {}, action ) => {
 // Store goes here
 const storeInstance = createStore(
     combineReducers({
-        surveryReducer: surveryReducer
+        surveryReducer,
     }),
     applyMiddleware(logger),
 )
