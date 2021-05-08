@@ -26,7 +26,7 @@ function Support() {
 
     return (
         <>
-            <h2>How are you feeling today?</h2>
+            <h2>How well are you being supported?</h2>
             <form onSubmit={handleSupport}>
                 <input onChange={(event) => setSupport(event.target.value)}
                 type="number" placeholder="Enter a number 1-5" value={support} />
