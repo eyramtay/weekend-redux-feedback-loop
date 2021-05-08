@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 
@@ -7,7 +7,7 @@ function Feeling() {
 
     // local state for feelings score
     const [ feelingScore, setFeelingScore ] = useState('');
-    const [ numberCheck, setNumberCheck ] = useState('');
+    // const [ numberCheck, setNumberCheck ] = useState('');
 
     const history = useHistory();
 
@@ -40,3 +40,5 @@ function Feeling() {
         </>
     )
 }
+
+export default Feeling;
