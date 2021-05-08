@@ -13,14 +13,20 @@ function Feeling() {
 
     const dispatch = useDispatch();
 
-    function handleNext(event) {
-        let number = Number( event.target.value );
-            setFeelingScore( number );
+    function handleSubmit(event) {
+        // let number = Number( event.target.value );
+        //     setFeelingScore( number );
     }
 
     function sendFeeling(score) {
-        dispatch({ type: 'sendFeeling' });
-        history.push( '/understanding' );
+
+        if ( score > 5 || score < 1 || score === '' ) {
+            alert( 'Please enter a number between 1-5' );
+            setFeelingScore('');
+        } else { 
+            dispatch({ type: 'sendFeeling', payload: score });
+            history.push( '/understanding' );
+        }
     }
 
     return (
@@ -29,7 +35,7 @@ function Feeling() {
             <form onSubmit={handleSubmit}>
                 <input onChange={(event) => setFeelingScore(event.target.value)}
                 type="number" placeholder="Enter a number 1-5" value={feelingScore} />
-                <button type="submit">Next</button>
+                <button type="submit" onClick={() => sendFeeling( feelingScore )}>Next</button>
             </form>
         </>
     )
