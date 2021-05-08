@@ -8,16 +8,16 @@ function Review() {
     const feedback = useSelector(store => store.surveyReducer);
 
     const history = useHistory();
-    const submit = () => {
-        console.log('In submit');
-        axios.post('/feedback', feedback).then((response) => {
-            console.log('Back from POST', response);
-        }).catch((error) => {
-            console.log(error);
-            alert('Error in POST', error);
-        })
+    // const submit = () => {
+    //     console.log('In submit');
+    //     axios.post('/feedback', feedback).then((response) => {
+    //         console.log('Back from POST', response);
+    //     }).catch((error) => {
+    //         console.log(error);
+    //         alert('Error in POST', error);
+    //     })
 
-    }
+    // }
 
     return (
         <>
@@ -27,6 +27,7 @@ function Review() {
             <p>Support: {feedback.support}</p>
             <p>Comments: {feedback.comments}</p>
             <br />
+            <button>Submit</button>
         </>
     )
 

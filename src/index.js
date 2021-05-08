@@ -8,7 +8,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const surveryReducer = ( state = {}, action ) => {
+const surveyReducer = ( state = {}, action ) => {
     if (action.type === 'sendFeeling') {
         state = {...state, feeling: action.payload}
     }
@@ -31,7 +31,7 @@ const surveryReducer = ( state = {}, action ) => {
 // Store goes here
 const storeInstance = createStore(
     combineReducers({
-        surveryReducer,
+        surveyReducer,
     }),
     applyMiddleware(logger),
 )

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 function Feeling() {
 
     // local state for feelings score
-    const [ feelingScore, setFeelingScore ] = useState('');
+    const [ feeling, setFeeling ] = useState('');
     // const [ numberCheck, setNumberCheck ] = useState('');
 
     const history = useHistory();
@@ -33,9 +33,9 @@ function Feeling() {
         <>
             <h2>How are you feeling today?</h2>
             <form onSubmit={handleSubmit}>
-                <input onChange={(event) => setFeelingScore(event.target.value)}
-                type="number" placeholder="Enter a number 1-5" value={feelingScore} />
-                <button type="submit" onClick={() => sendFeeling( feelingScore )}>Next</button>
+                <input onChange={(event) => setFeeling(event.target.value)}
+                type="number" placeholder="Enter a number 1-5" value={feeling} />
+                <button type="submit" onClick={() => sendFeeling( feeling )}>Next</button>
             </form>
         </>
     )
