@@ -7,6 +7,13 @@ function Review() {
     
     const feedback = useSelector(store => store.surveyReducer);
 
+    function restartSurvey() {
+        dispatch({
+            type: 'CLEAR',
+        })
+        history.push('/thankyou')
+    }
+
     const history = useHistory();
     // const submit = () => {
     //     console.log('In submit');
@@ -27,7 +34,7 @@ function Review() {
             <p>Support: {feedback.support}</p>
             <p>Comments: {feedback.comments}</p>
             <br />
-            <button>Submit</button>
+            <button onClick={restartSurvey}>Submit</button>
         </>
     )
 
