@@ -24,6 +24,10 @@ const surveyReducer = ( state = {}, action ) => {
     if (action.type === 'sendComments') {
         state = {...state, comments: action.payload}
     }
+
+    if (action.type === 'RESET_FEEDBACK') {
+        return {};
+    }
     return state;
 
 }

@@ -1,30 +1,43 @@
 import axios from 'axios';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 function Review() {
     
     const feedback = useSelector(store => store.surveyReducer);
+    const history = useHistory();
+    const dispatch = useDispatch();
 
-    function restartSurvey() {
+    // function feedbackConfirmation() {
+        
+    //     history.push('/done')
+    // }
+
+    function handleSubmit() {
+        history.push('/done');
+        addFeedback();
         dispatch({
-            type: 'CLEAR',
+            type: 'RESET_FEEDBACK'
         })
-        history.push('/thankyou')
     }
 
-    const history = useHistory();
-    // const submit = () => {
-    //     console.log('In submit');
-    //     axios.post('/feedback', feedback).then((response) => {
-    //         console.log('Back from POST', response);
-    //     }).catch((error) => {
-    //         console.log(error);
-    //         alert('Error in POST', error);
-    //     })
+    function addFeedback() {
+        
+        console.log('In addFeedback');
+        axios({
+            method: 'POST',
+            url: '/feedback',
+            data: feedback
+        })
+            .then((response) => {
+            console.log('Added feedback w/ POST', response);
+        })
+            .catch((error) => {
+            console.log(error);
+            alert('Error in POST', error);
+        })
+    }
 
-    // }
 
     return (
         <>
@@ -34,7 +47,7 @@ function Review() {
             <p>Support: {feedback.support}</p>
             <p>Comments: {feedback.comments}</p>
             <br />
-            <button onClick={restartSurvey}>Submit</button>
+            <button onClick={handleSubmit}>Submit</button>
         </>
     )
 
